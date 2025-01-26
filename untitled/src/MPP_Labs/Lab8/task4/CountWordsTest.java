@@ -18,15 +18,23 @@ public class CountWordsTest {
         System.out.println(result);
     }
 
-    public int countWords(List<String> words, char c, char d, int len){
-        int result = 0;
-        for(String word:words){
-            if(word.length()==len){
-                if(word.contains(String.valueOf(c)) && !word.contains(String.valueOf(d))){
-                    result+=1;
-                }
-            }
-        }
-        return result;
+    public int countWords(List<String> words, char c, char d, int len) {
+        return (int) words.stream()
+                .filter(word -> word.length() == len)
+                .filter(word -> word.contains(String.valueOf(c)))
+                .filter(word -> !word.contains(String.valueOf(d)))
+                .count();
     }
+
+//    public int countWords(List<String> words, char c, char d, int len){
+//        int result = 0;
+//        for(String word:words){
+//            if(word.length()==len){
+//                if(word.contains(String.valueOf(c)) && !word.contains(String.valueOf(d))){
+//                    result+=1;
+//                }
+//            }
+//        }
+//        return result;
+//    }
 }
